@@ -14,11 +14,11 @@ def make_payment(amount: int | str) -> str:
     amount = validate_number(amount)
     
     """This is a tool used to make payments or purchase things. MUST take an interger 'amount' as an argument."""
-    if amount > data['amount']:
+    if amount[0] > data['amount']:
         return f"You have only {data['amount']} cash."
     
-    data['amount'] -= amount
-    return f"{amount} debited from your account. Current amount {data['amount']}."
+    data['amount'] -= amount[0]
+    return f"{amount[0]} debited from your account. Current amount {data['amount']}."
 
 @mcp.tool(name='add_amount', description="This is a tool used to add amount to back account. Takes three argument - 'amount', 'card_number', 'cvv' all of three MUST be integers.")
 def add_amount(amount: int | str, card_number: int|str, cvv: int | str) -> str:
